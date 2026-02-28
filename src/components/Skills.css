@@ -1,0 +1,205 @@
+/* Skills.css */
+.skills-section {
+    padding: 7rem 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.skills-header {
+    margin-bottom: 3.5rem;
+}
+
+/* ── Grid cards ── */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 4rem;
+}
+
+.skill-card {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    border: 1px solid var(--card-accent, var(--accent-primary));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.skill-card:hover::before {
+    opacity: 0.4;
+}
+
+.skill-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.skill-card-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--card-accent, var(--accent-primary));
+    flex-shrink: 0;
+}
+
+.skill-category-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    font-family: 'DM Mono', monospace;
+    margin: 0;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+
+.skill-tag {
+    display: inline-block;
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-family: 'DM Mono', monospace;
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+    cursor: default;
+}
+
+.skill-tag:hover {
+    background: var(--tag-accent, var(--accent-primary));
+    color: #0e0e0e;
+    border-color: transparent;
+}
+
+/* ── Marquee ── */
+.marquee-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+}
+
+.marquee-container::before,
+.marquee-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.marquee-container::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg-color), transparent);
+}
+
+.marquee-container::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg-color), transparent);
+}
+
+.marquee-row {
+    width: 100%;
+    overflow: hidden;
+}
+
+.marquee-track {
+    display: flex;
+    gap: 0.75rem;
+    width: max-content;
+    animation: marquee-fwd 28s linear infinite;
+}
+
+.marquee-row--reverse .marquee-track {
+    animation: marquee-rev 28s linear infinite;
+}
+
+.marquee-row:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+@keyframes marquee-fwd {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-33.333%);
+    }
+}
+
+@keyframes marquee-rev {
+    from {
+        transform: translateX(-33.333%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.marquee-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1.25rem;
+    border-radius: 999px;
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+    font-size: 0.85rem;
+    font-family: 'DM Mono', monospace;
+    color: var(--text-muted);
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    cursor: default;
+}
+
+.marquee-pill:hover {
+    border-color: var(--pill-color, var(--accent-primary));
+    color: var(--pill-color, var(--accent-primary));
+    background: color-mix(in srgb, var(--pill-color, var(--accent-primary)) 8%, transparent);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-section {
+        padding: 5rem 1.5rem;
+    }
+}
