@@ -4,11 +4,11 @@ import { Github, Linkedin, Mail, Twitter, Code2 } from 'lucide-react';
 import './Footer.css';
 
 const socials = [
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:email@example.com', label: 'Email' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Code2, href: '#', label: 'LeetCode' },
+    { icon: Github, href: 'https://github.com/moksh1249', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/moksha-sharma-a232bb21b/', label: 'LinkedIn' },
+    { icon: Mail, href: 'mailto:moksh1249@gmail.com', label: 'Email' },
+    // { icon: Twitter, href: '#', label: 'Twitter' },
+    // { icon: Code2, href: '#', label: 'LeetCode' },
 ];
 
 const Footer = () => {
@@ -31,7 +31,7 @@ const Footer = () => {
 
                 {/* Contact button */}
                 <motion.a
-                    href="mailto:email@example.com"
+                    href="mailto:moksh1249@gmail.com"
                     className="btn btn-primary footer-contact-btn"
                     initial={{ opacity: 0, y: 20 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}

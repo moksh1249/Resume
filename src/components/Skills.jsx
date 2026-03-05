@@ -11,7 +11,7 @@ const skillCategories = [
     {
         title: "Frameworks & Tools",
         color: "var(--accent-secondary)",
-        skills: ["Flutter", "Supabase", "Git", "REST APIs", "Autodesk 360", "Autodesk CFD", "Autodesk Revit", "Figma", "Rive"]
+        skills: ["Flutter", "Supabase", "Git", "REST APIs", "Autodesk 360", "Autodesk CFD", "Autodesk Revit", "Figma", "Postman", "Harmonizer","Firebase"]
     },
     {
         title: "AI & Machine Learning",

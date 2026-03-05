@@ -6,33 +6,73 @@ import './Projects.css';
 const projectData = [
     {
         number: '01',
-        title: "Interactive Web Portal",
-        description: "A modern web portal built using React and Three.js for immersive 3D interactions. Features a responsive design, dark mode switch, and real-time data rendering.",
-        techStack: ["React", "Three.js", "CSS", "Vite"],
-        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
-        githubUrl: "#",
-        liveUrl: "#",
+        title: "SyncED",
+        description: "An educational app created during the Hackaccino 24-hour hackathon. Addresses college students' educational challenges with integrated resume building and note preparation features.",
+        techStack: ["Dart", "Flutter", "Firebase"],
+        videoUrl: "",
+        githubUrl: "https://github.com/moksh1249/SyncED",
+        liveUrl: "https://github.com/moksh1249/SyncED",
         color: "var(--accent-primary)"
     },
     {
         number: '02',
-        title: "CFD Analysis Dashboard",
-        description: "Desktop utility designed to handle Autodesk CFD processing workflows efficiently with interactive data visualization dashboards and Supabase as the backend.",
-        techStack: ["Python", "Pandas", "Supabase", "Autodesk CFD"],
-        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
-        githubUrl: "#",
-        liveUrl: "#",
+        title: "Imagine Cup 2026",
+        description: "An inclusive educational application designed specifically for students with ADHD, dyslexia, and autism. Provides tailored learning tools and accessibility features with future expansion capabilities.",
+        techStack: ["Dart", "Flutter", "Accessibility"],
+        videoUrl: "",
+        githubUrl: "https://github.com/moksh1249/imagine-cup-2026",
+        liveUrl: "https://github.com/moksh1249/imagine-cup-2026",
         color: "var(--accent-secondary)"
     },
     {
         number: '03',
-        title: "NLP Sentence Classifier",
-        description: "Natural language processing model built to classify text into semantic categories using machine learning paradigms and feature engineering techniques.",
-        techStack: ["Python", "Scikit-learn", "NumPy", "NLP"],
-        videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
-        githubUrl: "#",
-        liveUrl: "#",
+        title: "Nandi Scan V2",
+        description: "An upgraded version of the original Nandi Scan with significantly improved user interface and enhanced server functionality for better performance and usability.",
+        techStack: ["Dart", "Flutter", "Backend API"],
+        videoUrl: "",
+        githubUrl: "https://github.com/moksh1249/nandi-scan-v2",
+        liveUrl: "https://github.com/moksh1249/nandi-scan-v2",
         color: "var(--accent-tertiary)"
+    },
+    {
+        number: '04',
+        title: "Music App",
+        description: "A personal music application project designed to enhance portfolio skills. Features modern UI/UX and core music streaming functionality for user engagement.",
+        techStack: ["Dart", "Flutter", "Audio API"],
+        videoUrl: "",
+        githubUrl: "https://github.com/moksh1249/music_app",
+        liveUrl: "https://github.com/moksh1249/music_app",
+        color: "var(--accent-primary)"
+    },
+    {
+        number: '05',
+        title: "Instagram Analyzer",
+        description: "A web application that analyzes Instagram creator accounts and provides insights into posting patterns, engagement metrics, and creator-friendly analytics for content optimization.",
+        techStack: ["HTML", "JavaScript", "Instagram API"],
+        videoUrl: "",
+        githubUrl: "https://github.com/moksh1249/Insta_analyzer",
+        liveUrl: "https://github.com/moksh1249/Insta_analyzer",
+        color: "var(--accent-secondary)"
+    },
+    {
+        number: '06',
+        title: "F1 concept design",
+        description: "My first autodesk 360 project where I designed a simple F1 car concept. The project was a great learning experience in 3D modeling and design principles, showcasing my ability to create complex structures and attention to detail.",
+        techStack: ["autodesk 360", "3D Modeling", "Design"],
+        videoUrl: "",
+        githubUrl: "",
+        liveUrl: "",
+        color: "var(--accent-primary)"
+    },
+    {
+        number: '07',
+        title: "Cansat concept design",
+        description: "A cansat design project where I created a conceptual design for a small satellite that can be launched and deployed in the atmosphere. This project involved understanding the principles of satellite design, aerodynamics, and payload integration, demonstrating my ability to apply engineering concepts to real-world applications.",
+        techStack: ["autodesk 360", "3D Modeling", "Aerospace Design"],
+        videoUrl: "",
+        githubUrl: "",
+        liveUrl: "",
+        color: "var(--accent-secondary)"
     }
 ];
 

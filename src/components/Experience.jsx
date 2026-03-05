@@ -4,31 +4,49 @@ import './Experience.css';
 
 const experienceData = [
     {
-        type: 'competition',
-        title: "Hackathon Finalist",
-        organization: "National Coding Competition",
-        date: "2023",
-        description: "Built a fully functional real-time web application using React, Node.js, and WebSockets under 48 hours. Placed in the top 5 teams nationally.",
-        tags: ["React", "Node.js", "WebSockets"],
+        type: 'Role',
+        title: "General Secretary",
+        organization: "Mobilon Club, Bennett University",
+        date: "2025-2026",
+        description: "Leading the Mobilon Club, I spearheaded initiatives to foster a vibrant tech community on campus. Created mobile apps, organized workshops, and speaker sessions that attracted over 200 participants, significantly increasing club engagement and visibility.",
+        tags: ["Leadership", "Event Management", "Community Building", "Mobile Development"],
         color: "var(--accent-primary)"
     },
     {
-        type: 'role',
-        title: "Technical Team Member",
-        organization: "University Computer Science Club",
-        date: "2022 – Present",
-        description: "Assisted in building platforms for college fests, developed internal tools, and organized open source contribution workshops for 100+ students.",
-        tags: ["Community", "Web Dev", "Open Source"],
+        type: 'Role',
+        title: " AI Developer and Researcher Intern",
+        organization: "SpiderMedia Labs",
+        date: "January 2025- March 2025",
+        description: "During my internship at SpiderMedia Labs, I contributed to cutting-edge AI projects, developing machine learning models and conducting research that enhanced the company's product offerings. This experience honed my technical skills and deepened my understanding of AI applications in real-world scenarios.",
+        tags: ["AI Development", "Machine Learning", "Research", "Internship"],
         color: "var(--accent-secondary)"
     },
     {
-        type: 'achievement',
-        title: "AI/ML Research Project",
-        organization: "Academic Initiative",
-        date: "2024",
-        description: "Independently developed an NLP sentence classifier as part of a self-driven research initiative, achieving 87% accuracy on the test set using Scikit-learn.",
-        tags: ["Python", "NLP", "Machine Learning"],
+        type: 'Role',
+        title: " Development Team co-Head",
+        organization: "Astronomy club, Bennett University",
+        date: "2025-2026",
+        description: "As co-head of the development team in the Astronomy club, I led a group of 15 members in designing cansats, rockets and rovers for national competitions. These designs will be brought to life in the upcoming year, showcasing our commitment to innovation and hands-on learning in the field of astronomy.",
+        tags: ["Leadership", "Project Management", "Astronomy", "STEM Education"],
         color: "var(--accent-tertiary)"
+    },
+    {
+        type: 'competition',
+        title: 'hackaccino 2025',
+        organization: 'CSI Bennett University',
+        date: 'April 2025',
+        description: 'Participated in the hackaccino 2025 competition, where I collaborated with a team of developers to create an innovative solution for a student based problem. The project included chatbots for resume modifications, a calling agent that helped refine interviewing skills and various other tools to help students prepare for placements. Our solution was recognized for its creativity and impact.',
+        tags: ["AI", "Flutter", "Figma", "Vaapi","n8n", "Botpress"],
+        color: "var(--accent-primary)"
+    },
+    {
+        type: 'competition',
+        title: 'Smart BU Hackathon 2026',
+        organization: 'Bennett University',
+        date: 'March 2025',
+        description: 'In the Bennett University Hackathon, I worked with a team to develop a mobile application that addressed a breed identification for BPA and the model had an accuracy of 95%. The app was designed to be user-friendly and accessible, demonstrating our ability to apply technical skills to solve real-world problems effectively.',
+        tags: ["Flutter", "Resnet 18", "Computer Vision", "Mobile Development"],
+        color: "var(--accent-secondary)"
     }
 ];
 

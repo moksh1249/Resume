@@ -126,9 +126,9 @@ const HeroDecor = () => (
             </div>
             <div className="dcb-body mono">
                 <div><span className="dcb-kw">const</span> <span className="dcb-var">dev</span> = {'{'}</div>
-                <div className="dcb-indent"><span className="dcb-str">name</span>: <span className="dcb-val">"Your Name"</span>,</div>
-                <div className="dcb-indent"><span className="dcb-str">role</span>: <span className="dcb-val">"CSE Student"</span>,</div>
-                <div className="dcb-indent"><span className="dcb-str">passion</span>: <span className="dcb-val">"Building things"</span></div>
+                <div className="dcb-indent"><span className="dcb-str">name</span>: <span className="dcb-val">"Moksha"</span>,</div>
+                <div className="dcb-indent"><span className="dcb-str">Mob</span>: <span className="dcb-val">"8920896429"</span>,</div>
+                <div className="dcb-indent"><span className="dcb-str">git</span>: <span className="dcb-val">"initialized"</span></div>
                 <div>{'}'}</div>
             </div>
         </motion.div>
@@ -162,7 +162,7 @@ const Hero = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.6, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
                     >
-                        Your Name
+                        Moksha Sharma
                     </motion.span>
                 </h1>
 
@@ -198,7 +198,7 @@ const Hero = () => {
                     transition={{ delay: 1.3, duration: 0.5 }}
                 >
                     <MagneticBtn href="#projects" className="btn-primary">View Projects ↗</MagneticBtn>
-                    <MagneticBtn href="mailto:email@example.com" className="btn-outline">Get in Touch</MagneticBtn>
+                    <MagneticBtn href="mailto:moksh1249@gmail.com" className="btn-outline">Get in Touch</MagneticBtn>
                 </motion.div>
 
                 {/* Stats row */}

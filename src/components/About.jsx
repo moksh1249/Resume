@@ -58,7 +58,7 @@ const About = () => {
 
                     {/* Stats */}
                     <div className="about-stats">
-                        <CounterStat num="4+" label="Projects Shipped" delay={0.4} />
+                        <CounterStat num="6+" label="Projects" delay={0.4} />
                         <CounterStat num="15+" label="Technologies" delay={0.5} />
                         <CounterStat num="2" label="Hackathons" delay={0.6} />
                     </div>
@@ -78,13 +78,13 @@ const About = () => {
 
                         <h3 className="edu-degree">B.Tech — Computer Science &amp; Engineering</h3>
                         <div className="edu-meta">
-                            <span className="edu-year">2023 – 2027</span>
+                            <span className="edu-year">2024 – 2028</span>
                             <span className="edu-bullet">·</span>
                             <span className="edu-status">2nd Year</span>
                         </div>
                         <div className="edu-location">
                             <MapPin size={14} />
-                            Your University Name
+                            Bennett University
                         </div>
 
                         <div className="edu-timeline">
@@ -112,7 +112,7 @@ const About = () => {
                         <BookOpen size={18} className="edu-icon" />
                         <span className="interests-title">Currently Exploring</span>
                         <div className="interests-tags">
-                            {['Generative AI', 'Flutter/Dart', '3D Web (Three.js)', 'System Design', 'Open Source'].map(t => (
+                            {['Agentic AI', 'Flutter/Dart', '3D Web (Three.js)', 'System Design', 'Open Source', 'Rive'].map(t => (
                                 <span key={t} className="tag">{t}</span>
                             ))}
                         </div>
