@@ -100,15 +100,15 @@ const Experience = () => {
         <section id="experience" className="experience-section" ref={ref}>
             <div className="experience-header">
                 <motion.div className="section-label"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.5 }}>
+                    initial={{ clipPath: 'inset(0 100% 0 0)', opacity: 1 }}
+                    animate={inView ? { clipPath: 'inset(0 0% 0 0)' } : {}}
+                    transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}>
                     Experience
                 </motion.div>
                 <motion.h2 className="section-title-xl"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.5, delay: 0.1 }}>
+                    initial={{ clipPath: 'inset(0 0 100% 0)', y: 16 }}
+                    animate={inView ? { clipPath: 'inset(0 0 0% 0)', y: 0 } : {}}
+                    transition={{ duration: 0.85, delay: 0.12, ease: [0.76, 0, 0.24, 1] }}>
                     Journey &amp; Milestones
                 </motion.h2>
             </div>

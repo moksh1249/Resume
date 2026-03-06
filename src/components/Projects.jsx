@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 import './Projects.css';
 
@@ -81,15 +81,36 @@ const ProjectCard = ({ project, index }) => {
     const cardRef = useRef(null);
     const inView = useInView(cardRef, { once: true, margin: '-80px' });
 
+    // 3-D tilt
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+    const rawRotateX = useTransform(mouseY, [-0.5, 0.5], [4, -4]);
+    const rawRotateY = useTransform(mouseX, [-0.5, 0.5], [-4, 4]);
+    const rotateX = useSpring(rawRotateX, { stiffness: 240, damping: 22 });
+    const rotateY = useSpring(rawRotateY, { stiffness: 240, damping: 22 });
+
+    const handleMouseMove = (e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        mouseX.set((e.clientX - rect.left) / rect.width - 0.5);
+        mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
+        videoRef.current?.play().catch(() => { /* autoplay restrictions: silently ignore */ });
+    };
+    const handleMouseLeave = () => {
+        mouseX.set(0);
+        mouseY.set(0);
+        if (videoRef.current) { videoRef.current.pause(); videoRef.current.currentTime = 0; }
+    };
+
     return (
         <motion.div
             ref={cardRef}
             className="project-card"
             initial={{ opacity: 0, y: 60 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-            onMouseEnter={() => videoRef.current?.play().catch(() => { })}
-            onMouseLeave={() => { if (videoRef.current) { videoRef.current.pause(); videoRef.current.currentTime = 0; } }}
+            transition={{ duration: 0.7, delay: index * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
+            style={{ rotateX, rotateY, transformPerspective: 1200 }}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
         >
             {/* Big background number */}
             <span className="project-number" style={{ '--num-color': project.color }}>
@@ -149,15 +170,15 @@ const Projects = () => {
         <section id="projects" className="projects-section" ref={ref}>
             <div className="projects-header">
                 <motion.div className="section-label"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.5 }}>
+                    initial={{ clipPath: 'inset(0 100% 0 0)', opacity: 1 }}
+                    animate={inView ? { clipPath: 'inset(0 0% 0 0)' } : {}}
+                    transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}>
                     Projects
                 </motion.div>
                 <motion.h2 className="section-title-xl"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.5, delay: 0.1 }}>
+                    initial={{ clipPath: 'inset(0 0 100% 0)', y: 16 }}
+                    animate={inView ? { clipPath: 'inset(0 0 0% 0)', y: 0 } : {}}
+                    transition={{ duration: 0.85, delay: 0.12, ease: [0.76, 0, 0.24, 1] }}>
                     Selected Work
                 </motion.h2>
             </div>

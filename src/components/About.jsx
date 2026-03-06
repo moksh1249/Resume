@@ -8,6 +8,16 @@ const fadeUp = {
     visible: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.65, delay: i * 0.12, ease: [0.25, 0.46, 0.45, 0.94] } }),
 };
 
+/* Clip-path curtain reveal variant — text sweeps up into view */
+const clipReveal = {
+    hidden: { clipPath: 'inset(0 0 100% 0)', y: 16 },
+    visible: (i = 0) => ({
+        clipPath: 'inset(0 0 0% 0)',
+        y: 0,
+        transition: { duration: 0.85, delay: i * 0.14, ease: [0.76, 0, 0.24, 1] },
+    }),
+};
+
 const CounterStat = ({ num, label, delay }) => {
     const ref = useRef(null);
     const inView = useInView(ref, { once: true, margin: '-80px' });
@@ -34,11 +44,11 @@ const About = () => {
             <div className="about-inner">
                 {/* Left column */}
                 <div className="about-left">
-                    <motion.div className="section-label" variants={fadeUp} custom={0} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
+                    <motion.div className="section-label" variants={clipReveal} custom={0} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
                         About Me
                     </motion.div>
 
-                    <motion.h2 className="section-title-xl about-headline" variants={fadeUp} custom={1} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
+                    <motion.h2 className="section-title-xl about-headline" variants={clipReveal} custom={1} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
                         Building the future,<br />
                         <span className="text-accent">one commit</span> at a time.
                     </motion.h2>

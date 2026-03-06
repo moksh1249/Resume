@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Hero from './components/Hero';
@@ -13,6 +14,10 @@ function App() {
     const [theme, setTheme] = useState('dark');
     const [splashDone, setSplashDone] = useState(false);
     const cursorRef = useRef(null);
+
+    // Scroll progress bar
+    const { scrollYProgress } = useScroll();
+    const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme);
@@ -58,6 +63,12 @@ function App() {
             {!splashDone && <SplashScreen onComplete={() => setSplashDone(true)} />}
 
             <div className={`app-container site-reveal ${splashDone ? 'site-reveal--visible' : ''}`}>
+                {/* Scroll progress bar */}
+                <motion.div
+                    className="scroll-progress-bar"
+                    style={{ scaleX }}
+                    aria-hidden="true"
+                />
                 <div className="cursor-glow" ref={cursorRef} aria-hidden="true" />
                 <Navbar theme={theme} toggleTheme={toggleTheme} />
                 <main>

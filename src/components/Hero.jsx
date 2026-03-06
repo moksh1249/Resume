@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import './Hero.css';
 
 /* ── Word-by-word reveal animation ── */
@@ -137,10 +137,21 @@ const HeroDecor = () => (
 
 /* ── Main hero ── */
 const Hero = () => {
+    const heroRef = useRef(null);
+
+    // Parallax: track scroll within the hero viewport
+    const { scrollYProgress } = useScroll({
+        target: heroRef,
+        offset: ['start start', 'end start'],
+    });
+    const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '28%']);
+    const decorY   = useTransform(scrollYProgress, [0, 1], ['0%', '14%']);
+    const heroOpacity = useTransform(scrollYProgress, [0.55, 0.95], [1, 0]);
+
     return (
-        <section id="home" className="hero-section">
+        <section id="home" className="hero-section" ref={heroRef}>
             {/* Left: content */}
-            <div className="hero-content">
+            <motion.div className="hero-content" style={{ y: contentY, opacity: heroOpacity }}>
                 {/* Badge */}
                 <motion.div
                     className="hero-badge"
@@ -215,10 +226,11 @@ const Hero = () => {
                         </div>
                     ))}
                 </motion.div>
-            </div>
+            </motion.div>
 
             {/* Right: decorative panel (no Three.js) */}
             <motion.div
+                style={{ y: decorY }}
                 initial={{ opacity: 0, x: 40 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
