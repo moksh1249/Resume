@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Github, Linkedin, Mail, Twitter, Code2 } from 'lucide-react';
+import GlitchText from '../animations/GlitchText';
 import './Footer.css';
 
 const socials = [
@@ -26,7 +27,9 @@ const Footer = () => {
                     transition={{ duration: 0.7 }}
                 >
                     <h2 className="footer-cta-text">Let's Build Something</h2>
-                    <span className="footer-cta-accent">Remarkable.</span>
+                    <span className="footer-cta-accent">
+                        <GlitchText text="Remarkable." periodic interval={4000} />
+                    </span>
                 </motion.div>
 
                 {/* Contact button */}

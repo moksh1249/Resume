@@ -1,5 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import FloatingOrbs from '../animations/FloatingOrbs';
+import GlitchText from '../animations/GlitchText';
 import './Experience.css';
 
 const experienceData = [
@@ -98,6 +100,8 @@ const Experience = () => {
 
     return (
         <section id="experience" className="experience-section" ref={ref}>
+            {/* Ambient floating orbs */}
+            <FloatingOrbs intensity={0.5} />
             <div className="experience-header">
                 <motion.div className="section-label"
                     initial={{ clipPath: 'inset(0 100% 0 0)', opacity: 1 }}
@@ -109,7 +113,7 @@ const Experience = () => {
                     initial={{ clipPath: 'inset(0 0 100% 0)', y: 16 }}
                     animate={inView ? { clipPath: 'inset(0 0 0% 0)', y: 0 } : {}}
                     transition={{ duration: 0.85, delay: 0.12, ease: [0.76, 0, 0.24, 1] }}>
-                    Journey &amp; Milestones
+                    <GlitchText text="Journey & Milestones" periodic interval={7000} />
                 </motion.h2>
             </div>
 

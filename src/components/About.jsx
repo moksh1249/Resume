@@ -1,6 +1,9 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { BookOpen, GraduationCap, MapPin } from 'lucide-react';
+import FloatingOrbs from '../animations/FloatingOrbs';
+import CountUp from '../animations/CountUp';
+import ScrollReveal from '../animations/ScrollReveal';
 import './About.css';
 
 const fadeUp = {
@@ -18,20 +21,18 @@ const clipReveal = {
     }),
 };
 
-const CounterStat = ({ num, label, delay }) => {
-    const ref = useRef(null);
-    const inView = useInView(ref, { once: true, margin: '-80px' });
+/* CounterStat now uses the animated CountUp */
+const CounterStat = ({ num, label }) => {
+    const match = String(num).match(/^(\d+)(.*)$/);
+    const to = match ? parseInt(match[1], 10) : 0;
+    const suffix = match ? match[2] : '';
     return (
-        <motion.div
-            ref={ref}
-            className="about-stat"
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay, duration: 0.5 }}
-        >
-            <span className="about-stat-num">{num}</span>
+        <div className="about-stat">
+            <span className="about-stat-num">
+                <CountUp to={to} suffix={suffix} />
+            </span>
             <span className="about-stat-label">{label}</span>
-        </motion.div>
+        </div>
     );
 };
 
@@ -41,6 +42,9 @@ const About = () => {
 
     return (
         <section id="about" className="about-section" ref={ref}>
+            {/* Ambient floating orbs – low intensity so they're subtle */}
+            <FloatingOrbs intensity={0.65} />
+
             <div className="about-inner">
                 {/* Left column */}
                 <div className="about-left">
@@ -53,24 +57,28 @@ const About = () => {
                         <span className="text-accent">one commit</span> at a time.
                     </motion.h2>
 
-                    <motion.p className="about-body" variants={fadeUp} custom={2} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
-                        I'm a 2nd-year B.Tech CSE student driven by a love for elegant code and
-                        meaningful products. My work spans full-stack web dev, Autodesk CAD tooling,
-                        and machine learning — bridging the gap between theoretical knowledge and
-                        real-world impact.
-                    </motion.p>
+                    <ScrollReveal direction="up" delay={0.25} duration={0.6}>
+                        <p className="about-body">
+                            I'm a 2nd-year B.Tech CSE student driven by a love for elegant code and
+                            meaningful products. My work spans full-stack web dev, Autodesk CAD tooling,
+                            and machine learning — bridging the gap between theoretical knowledge and
+                            real-world impact.
+                        </p>
+                    </ScrollReveal>
 
-                    <motion.p className="about-body" variants={fadeUp} custom={3} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
-                        I believe great software is built at the intersection of strong CS fundamentals
-                        and creative problem-solving. Outside of coding, I contribute to the university
-                        CS club, participate in hackathons, and explore the latest in AI.
-                    </motion.p>
+                    <ScrollReveal direction="up" delay={0.38} duration={0.6}>
+                        <p className="about-body">
+                            I believe great software is built at the intersection of strong CS fundamentals
+                            and creative problem-solving. Outside of coding, I contribute to the university
+                            CS club, participate in hackathons, and explore the latest in AI.
+                        </p>
+                    </ScrollReveal>
 
-                    {/* Stats */}
+                    {/* Animated stats */}
                     <div className="about-stats">
-                        <CounterStat num="6+" label="Projects" delay={0.4} />
-                        <CounterStat num="15+" label="Technologies" delay={0.5} />
-                        <CounterStat num="2" label="Hackathons" delay={0.6} />
+                        <CounterStat num="6+" label="Projects" />
+                        <CounterStat num="15+" label="Technologies" />
+                        <CounterStat num="2" label="Hackathons" />
                     </div>
                 </div>
 

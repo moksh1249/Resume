@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import ParticleField from '../animations/ParticleField';
 import './Hero.css';
 
 /* ── Word-by-word reveal animation ── */
@@ -150,6 +151,8 @@ const Hero = () => {
 
     return (
         <section id="home" className="hero-section" ref={heroRef}>
+            {/* Ambient particle canvas – sits behind everything */}
+            <ParticleField count={30} opacity={0.38} />
             {/* Left: content */}
             <motion.div className="hero-content" style={{ y: contentY, opacity: heroOpacity }}>
                 {/* Badge */}

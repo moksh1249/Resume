@@ -8,7 +8,21 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
 import SplashScreen from './components/SplashScreen';
+import ScrollingTicker from './animations/ScrollingTicker';
 import './index.css';
+
+const TICKER_ITEMS = [
+    'Full Stack Dev',
+    'Flutter & Dart',
+    'AI / ML',
+    'Problem Solver',
+    'Computer Vision',
+    'Open Source',
+    'React & Vite',
+    'System Design',
+    'CSE Student',
+    'Bennett University',
+];
 
 function App() {
     const [theme, setTheme] = useState('dark');
@@ -73,12 +87,16 @@ function App() {
                 <Navbar theme={theme} toggleTheme={toggleTheme} />
                 <main>
                     <Hero />
+                    {/* Velocity-linked ticker band between hero and about */}
+                    <ScrollingTicker items={TICKER_ITEMS} baseVelocity={85} />
                     <div className="section-divider" />
                     <About />
                     <div className="section-divider" />
                     <Skills />
                     <div className="section-divider" />
                     <Projects />
+                    {/* Second ticker separating projects from experience */}
+                    <ScrollingTicker items={TICKER_ITEMS} baseVelocity={70} />
                     <div className="section-divider" />
                     <Experience />
                 </main>

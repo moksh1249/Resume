@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useInView, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
+import GlitchText from '../animations/GlitchText';
 import './Projects.css';
 
 const projectData = [
@@ -105,8 +106,8 @@ const ProjectCard = ({ project, index }) => {
         <motion.div
             ref={cardRef}
             className="project-card"
-            initial={{ opacity: 0, y: 60 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+            initial={{ opacity: 0, y: 60, skewX: index % 2 === 0 ? 1.5 : -1.5 }}
+            animate={inView ? { opacity: 1, y: 0, skewX: 0 } : {}}
             transition={{ duration: 0.7, delay: index * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
             style={{ rotateX, rotateY, transformPerspective: 1200 }}
             onMouseMove={handleMouseMove}
@@ -179,7 +180,7 @@ const Projects = () => {
                     initial={{ clipPath: 'inset(0 0 100% 0)', y: 16 }}
                     animate={inView ? { clipPath: 'inset(0 0 0% 0)', y: 0 } : {}}
                     transition={{ duration: 0.85, delay: 0.12, ease: [0.76, 0, 0.24, 1] }}>
-                    Selected Work
+                    <GlitchText text="Selected Work" periodic interval={6000} />
                 </motion.h2>
             </div>
 
