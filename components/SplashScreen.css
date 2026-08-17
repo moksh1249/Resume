@@ -1,0 +1,174 @@
+/* SplashScreen.css */
+
+/* ── Overlay ── */
+.splash {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #0a0a0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+    /* Exit: slide the whole screen upward */
+    transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1),
+        opacity 0.9s ease;
+}
+
+.splash.exit {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+/* ── Background glow ── */
+.splash-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 40% at 50% 55%,
+            oklch(0.78 0.17 89 / 0.12) 0%,
+            transparent 70%);
+    pointer-events: none;
+    animation: glow-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow-pulse {
+    from {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.08);
+    }
+}
+
+/* ── Content wrapper ── */
+.splash-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Mark ── */
+.splash-mark {
+    width: 56px;
+    height: 56px;
+    background: oklch(0.78 0.17 89);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 1.6rem;
+    color: #0a0a0a;
+    transform: scale(0) rotate(-15deg);
+    animation: mark-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s forwards;
+}
+
+.splash-mark.exit {
+    animation: mark-exit 0.4s ease forwards;
+}
+
+@keyframes mark-pop {
+    to {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes mark-exit {
+    to {
+        transform: scale(0.6) rotate(10deg);
+        opacity: 0;
+    }
+}
+
+/* ── Letters ── */
+.splash-word {
+    display: flex;
+    gap: 0.05em;
+    overflow: hidden;
+}
+
+.splash-letter {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #f0efeb;
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: letter-rise 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.splash-letter.exit {
+    animation: letter-fall 0.3s ease forwards;
+}
+
+@keyframes letter-rise {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes letter-fall {
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+/* ── Tagline ── */
+.splash-tagline {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(240, 239, 235, 0.35);
+    margin: 0;
+    opacity: 0;
+    animation: fade-in 0.5s ease 0.7s forwards;
+    transition: opacity 0.3s ease;
+}
+
+.splash-tagline.exit {
+    opacity: 0;
+}
+
+@keyframes fade-in {
+    to {
+        opacity: 1;
+    }
+}
+
+/* ── Progress bar ── */
+.splash-bar {
+    width: 160px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 2px;
+    overflow: hidden;
+    opacity: 0;
+    animation: fade-in 0.4s ease 0.6s forwards;
+}
+
+.splash-bar-fill {
+    height: 100%;
+    background: oklch(0.78 0.17 89);
+    border-radius: 2px;
+    width: 0%;
+    animation: bar-grow 1.6s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
+}
+
+@keyframes bar-grow {
+    to {
+        width: 100%;
+    }
+}

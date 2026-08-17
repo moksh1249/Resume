@@ -1,0 +1,517 @@
+/* Hero.css */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    padding: 7rem 3rem 4rem 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 4rem;
+    position: relative;
+}
+
+/* ── Badge ── */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--card-border);
+    border-radius: 999px;
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    font-size: 0.78rem;
+    font-family: 'DM Mono', monospace;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    width: fit-content;
+}
+
+.pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.5);
+    animation: pulse-ring 2s infinite;
+}
+
+@keyframes pulse-ring {
+    0% {
+        box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 8px rgba(74, 222, 128, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
+    }
+}
+
+/* ── Title ── */
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    z-index: 10;
+}
+
+.hero-title {
+    line-height: 1.05;
+    font-size: clamp(2.6rem, 5vw, 4.4rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin: 0;
+}
+
+.hero-hello {
+    color: var(--text-muted);
+    font-size: 0.65em;
+    font-weight: 500;
+}
+
+.hero-name {
+    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+
+/* ── Role Cycler ── */
+.hero-role {
+    font-size: 1rem;
+    margin: 0;
+    color: var(--text-muted);
+    height: 1.6em;
+    overflow: hidden;
+}
+
+.mono {
+    font-family: 'DM Mono', monospace;
+}
+
+.role-prefix {
+    color: var(--accent-secondary);
+}
+
+.role-quote {
+    color: var(--accent-tertiary);
+}
+
+.role-cycler {
+    color: var(--accent-primary);
+    font-family: 'DM Mono', monospace;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    display: inline-block;
+}
+
+.role-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.role-hidden {
+    opacity: 0;
+    transform: translateY(-6px);
+}
+
+/* ── Description ── */
+.hero-description {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 480px;
+    margin: 0;
+}
+
+/* ── CTA ── */
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.magnetic-btn {
+    transition: transform 0.15s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+/* ── Stats ── */
+.hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line-color);
+}
+
+.hero-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.stat-num {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text-main);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.72rem;
+    font-family: 'DM Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+}
+
+/* ══════════════════════════════════
+   DECORATIVE RIGHT PANEL
+══════════════════════════════════ */
+.hero-decor {
+    flex: 1;
+    max-width: 500px;
+    min-height: 500px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Orbit rings */
+.decor-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid var(--card-border);
+    pointer-events: none;
+}
+
+.decor-ring-1 {
+    width: 420px;
+    height: 420px;
+    animation: spin-cw 35s linear infinite;
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+.decor-ring-2 {
+    width: 300px;
+    height: 300px;
+    animation: spin-ccw 25s linear infinite;
+    border-style: dashed;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.decor-ring-3 {
+    width: 180px;
+    height: 180px;
+    animation: spin-cw 18s linear infinite;
+    border-color: color-mix(in srgb, var(--accent-primary) 25%, transparent);
+}
+
+@keyframes spin-cw {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin-ccw {
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+/* Central glow orb */
+.decor-orb {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%,
+            color-mix(in srgb, var(--accent-primary) 60%, white),
+            var(--accent-primary) 40%,
+            color-mix(in srgb, var(--accent-secondary) 60%, transparent) 75%,
+            transparent 100%);
+    box-shadow:
+        0 0 60px 20px color-mix(in srgb, var(--accent-primary) 25%, transparent),
+        0 0 120px 40px color-mix(in srgb, var(--accent-secondary) 10%, transparent);
+    animation: orb-beat 4s ease-in-out infinite;
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes orb-beat {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 60px 20px color-mix(in srgb, var(--accent-primary) 25%, transparent), 0 0 120px 40px color-mix(in srgb, var(--accent-secondary) 10%, transparent);
+    }
+
+    50% {
+        transform: scale(1.08);
+        box-shadow: 0 0 80px 30px color-mix(in srgb, var(--accent-primary) 35%, transparent), 0 0 160px 60px color-mix(in srgb, var(--accent-secondary) 15%, transparent);
+    }
+}
+
+/* ── Floating pills ── */
+.decor-pill {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 999px;
+    backdrop-filter: blur(16px);
+    white-space: nowrap;
+    z-index: 5;
+}
+
+.dpill-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.dpill-dot--green {
+    background: #4ade80;
+    box-shadow: 0 0 6px #4ade80aa;
+}
+
+.dpill-dot--yellow {
+    background: oklch(0.78 0.17 89);
+    box-shadow: 0 0 6px oklch(0.78 0.17 89 / 0.6);
+}
+
+.dpill-dot--pink {
+    background: oklch(0.75 0.17 360);
+    box-shadow: 0 0 6px oklch(0.75 0.17 360 / 0.6);
+}
+
+.dpill-text {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.decor-pill-1 {
+    top: 14%;
+    left: 0%;
+}
+
+.decor-pill-2 {
+    top: 42%;
+    right: -2%;
+}
+
+.decor-pill-3 {
+    bottom: 18%;
+    left: 4%;
+}
+
+/* ── Grid dot background ── */
+.decor-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle, var(--card-border) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── Code block ── */
+.decor-code-block {
+    position: absolute;
+    bottom: 8%;
+    right: -4%;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    overflow: hidden;
+    backdrop-filter: blur(16px);
+    min-width: 200px;
+    z-index: 6;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.dcb-header {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 0.9rem;
+    border-bottom: 1px solid var(--card-border);
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.dcb-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+}
+
+.dcb-filename {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    margin-left: 0.3rem;
+}
+
+.dcb-body {
+    padding: 0.85rem 1rem;
+    font-size: 0.73rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+}
+
+.dcb-indent {
+    padding-left: 1.25rem;
+}
+
+.dcb-kw {
+    color: oklch(0.75 0.17 360);
+}
+
+.dcb-var {
+    color: var(--accent-secondary);
+}
+
+.dcb-str {
+    color: oklch(0.78 0.17 89);
+}
+
+.dcb-val {
+    color: oklch(0.85 0.12 140);
+}
+
+/* ── Scroll indicator ── */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.scroll-text {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.scroll-line {
+    width: 1px;
+    height: 48px;
+    background: var(--line-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.scroll-dot {
+    width: 3px;
+    height: 12px;
+    background: var(--accent-primary);
+    border-radius: 2px;
+    position: absolute;
+    left: -1px;
+    top: -12px;
+    animation: scroll-drop 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-drop {
+    0% {
+        top: -12px;
+        opacity: 1;
+    }
+
+    80% {
+        top: 48px;
+        opacity: 1;
+    }
+
+    100% {
+        top: 48px;
+        opacity: 0;
+    }
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 7rem 2rem 4rem;
+        gap: 3rem;
+    }
+
+    .hero-content {
+        max-width: 700px;
+        align-items: center;
+    }
+
+    .hero-description {
+        text-align: center;
+    }
+
+    .hero-stats {
+        justify-content: center;
+    }
+
+    .hero-decor {
+        max-width: 100%;
+        min-height: 360px;
+    }
+
+    .decor-ring-1 {
+        width: 320px;
+        height: 320px;
+    }
+
+    .decor-ring-2 {
+        width: 230px;
+        height: 230px;
+    }
+
+    .decor-ring-3 {
+        width: 140px;
+        height: 140px;
+    }
+
+    .decor-pill-2 {
+        right: 0;
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 6rem 1.5rem 3rem;
+    }
+
+    .hero-cta {
+        justify-content: center;
+    }
+
+    .hero-stats {
+        gap: 1.5rem;
+    }
+
+    .decor-code-block {
+        display: none;
+    }
+}

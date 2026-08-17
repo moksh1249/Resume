@@ -1,0 +1,23 @@
+/*
+  Generated via Harmonizer: https://harmonizer.evilmartians.com/#jZDBTsMwEET_ZbhaleMmofWRIk701N4QB5MsroVrF9sJQlX_HblAm4BU8HHe6nln9-gpROMdZMFgqScbIR_2cGpLkKg4B0PjXQoqJshqMmdoNsFvFSSfFHVVi4qfnviGC7WDdJ21B3Zy1T9c5chUimJ2Xf3PNL9oEuOlLpoK_kdBPurHy9-yR4ZNR6Ormd6HdzAopy1BTsvBj8suJhXaM53NB3TdhdfOm0hnXsz4YODOqq1x2g_sNc87RErJOB0h96c6S9-ShcRbozQYWhOoSca7nEPiWa_9TQaflb5S6smB4UkvvPXh3uhNgsQVEVWtOoNbFV5yLmpRivKYH2dXSYUEma-ex1Y71WTrborD4QM
+*/
+:root {
+  --ivory-500: oklch(0.72 0.17 34);
+  --ivory-600: oklch(0.62 0.14 34);
+  --ivory-900: oklch(0.56 0.13 34);
+  --ivory-1000: oklch(0.46 0.11 34);
+  --mustard-500: oklch(0.71 0.17 89);
+  --mustard-600: oklch(0.61 0.14 89);
+  --mustard-900: oklch(0.54 0.13 89);
+  --mustard-1000: oklch(0.45 0.11 89);
+  --turquoise-500: oklch(0.67 0.17 180);
+  --turquoise-600: oklch(0.58 0.14 180);
+  --turquoise-900: oklch(0.52 0.13 180);
+  --turquoise-1000: oklch(0.44 0.11 180);
+  --flamingo-500: oklch(0.73 0.17 360);
+  --flamingo-600: oklch(0.63 0.14 360);
+  --flamingo-900: oklch(0.56 0.13 360);
+  --flamingo-1000: oklch(0.47 0.11 360);
+  --dark-gray-500: oklch(0.26 0.003 17.35);
+  --ivory-pearl-500: oklch(0.926 0.0177 73.07);
+}
