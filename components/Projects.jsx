@@ -69,9 +69,9 @@ const projectData = [
         title: "Cansat concept design",
         description: "A cansat design project where I created a conceptual design for a small satellite that can be launched and deployed in the atmosphere. This project involved understanding the principles of satellite design, aerodynamics, and payload integration, demonstrating my ability to apply engineering concepts to real-world applications.",
         techStack: ["autodesk 360", "3D Modeling", "Aerospace Design"],
-        videoUrl: "",
+        videoUrl: "https://youtu.be/i_Cmc04TXAw",
         githubUrl: "",
-        liveUrl: "",
+        liveUrl: "https://a360.co/4yVM0MA",
         color: "var(--accent-secondary)"
     }
 ];
