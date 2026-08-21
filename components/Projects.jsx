@@ -1,7 +1,22 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useInView, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 import './Projects.css';
+
+const getYouTubeVideoId = (url) => {
+    if (!url) return null;
+
+    const shortMatch = url.match(/youtu\.be\/([a-zA-Z0-9_-]{11})/);
+    if (shortMatch) return shortMatch[1];
+
+    const fullMatch = url.match(/[?&]v=([a-zA-Z0-9_-]{11})/);
+    if (fullMatch) return fullMatch[1];
+
+    const embedMatch = url.match(/youtube\.com\/embed\/([a-zA-Z0-9_-]{11})/);
+    if (embedMatch) return embedMatch[1];
+
+    return null;
+};
 
 const projectData = [
     {
@@ -60,8 +75,8 @@ const projectData = [
         description: "My first autodesk 360 project where I designed a simple F1 car concept. The project was a great learning experience in 3D modeling and design principles, showcasing my ability to create complex structures and attention to detail.",
         techStack: ["autodesk 360", "3D Modeling", "Design"],
         videoUrl: "",
-        githubUrl: "",
-        liveUrl: "",
+        githubUrl: "https://a360.co/4cSnDWp",
+        liveUrl: "https://a360.co/4cSnDWp",
         color: "var(--accent-primary)"
     },
     {
@@ -79,7 +94,13 @@ const projectData = [
 const ProjectCard = ({ project, index }) => {
     const videoRef = useRef(null);
     const cardRef = useRef(null);
+    const [isHovered, setIsHovered] = useState(false);
     const inView = useInView(cardRef, { once: true, margin: '-80px' });
+    const youtubeId = getYouTubeVideoId(project.videoUrl);
+    const youtubeThumbnailUrl = youtubeId ? `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg` : null;
+    const youtubeEmbedUrl = youtubeId
+        ? `https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${youtubeId}&modestbranding=1&rel=0`
+        : null;
 
     // 3-D tilt
     const mouseX = useMotionValue(0);
@@ -96,6 +117,7 @@ const ProjectCard = ({ project, index }) => {
         videoRef.current?.play().catch(() => { /* autoplay restrictions: silently ignore */ });
     };
     const handleMouseLeave = () => {
+        setIsHovered(false);
         mouseX.set(0);
         mouseY.set(0);
         if (videoRef.current) { videoRef.current.pause(); videoRef.current.currentTime = 0; }
@@ -109,6 +131,7 @@ const ProjectCard = ({ project, index }) => {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: index * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
             style={{ rotateX, rotateY, transformPerspective: 1200 }}
+            onMouseEnter={() => setIsHovered(true)}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
         >
@@ -147,14 +170,36 @@ const ProjectCard = ({ project, index }) => {
 
             {/* Video preview */}
             <div className="project-preview">
-                <video
-                    ref={videoRef}
-                    src={project.videoUrl}
-                    muted loop playsInline
-                    className="project-video"
-                />
+                {youtubeId ? (
+                    <>
+                        <img
+                            src={youtubeThumbnailUrl}
+                            alt={`${project.title} video preview`}
+                            className="project-video"
+                            loading="lazy"
+                        />
+                        {isHovered && (
+                            <iframe
+                                src={youtubeEmbedUrl}
+                                className="project-video project-video-iframe"
+                                title={`${project.title} preview video`}
+                                allow="autoplay; encrypted-media; picture-in-picture"
+                                allowFullScreen
+                            />
+                        )}
+                    </>
+                ) : (
+                    <video
+                        ref={videoRef}
+                        src={project.videoUrl}
+                        muted
+                        loop
+                        playsInline
+                        className="project-video"
+                    />
+                )}
                 <div className="project-preview-overlay">
-                    <span className="preview-label mono">Hover to Play</span>
+                    <span className="preview-label mono">{isHovered ? 'Playing...' : 'Hover to Play'}</span>
                 </div>
                 <div className="project-accent-bar" style={{ background: project.color }} />
             </div>
